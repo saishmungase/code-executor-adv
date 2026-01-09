@@ -1,0 +1,12 @@
+{
+  "name": "api-layer",
+  "version": "1.0.0",
+  "description": "responsible for job management",
+  "license": "ISC",
+  "author": "saish",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
