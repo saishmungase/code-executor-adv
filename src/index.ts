@@ -4,8 +4,12 @@ import { createClient } from "redis";
 import { v4 } from 'uuid';
 import { Job } from './job.js';
 
+const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+
 const app = express();
-const client = createClient();
+
+const client = createClient({ url: REDIS_URL });
+client.on('error', (err) => console.log('Redis Client Error', err));
 await client.connect();
 
 type JOB_TYPE = {
