@@ -3,10 +3,27 @@ import type { Request, Response } from 'express';
 import { createClient } from "redis";
 import { v4 } from 'uuid';
 import { Job } from './job.js';
+import cors from 'cors'
+import type {CorsOptions} from "cors"
+
+const whitelist = ['http://localhost:5173', 'https://group-code.vercel.app'];
 
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 
+const corsOptions : CorsOptions = {
+    origin : function (origin, callback){
+        if(!origin || whitelist.indexOf(origin) != -1){
+            callback(null, true)
+        }
+        else{
+            callback(new Error('Not Allowed By Cors'))
+        }
+    }
+}
+
 const app = express();
+
+app.use(cors(corsOptions));
 
 const client = createClient({ url: REDIS_URL });
 client.on('error', (err) => console.log('Redis Client Error', err));
