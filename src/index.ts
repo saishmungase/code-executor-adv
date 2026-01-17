@@ -6,7 +6,7 @@ import { Job } from './job.js';
 import cors from 'cors'
 import type {CorsOptions} from "cors"
 
-const whitelist = ['http://localhost:5173', 'https://group-code.vercel.app', 'https://codesync.saish.tech'];
+const whitelist = ['http://localhost:5173', 'https://group-code.vercel.app', 'https://codesync.saish.tech', 'https://www.saish.tech'];
 
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 
